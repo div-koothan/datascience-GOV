@@ -1,0 +1,622 @@
+---
+title: "Module 6a: R Markdown"
+subtitle: "GOV 355M, 80672"
+author: "Michael Findley & Michael Denly"
+output: 
+  beamer_presentation:
+    keep_tex: yes
+header-includes:
+  - \usepackage{multicol}
+  - \setbeamertemplate{footline}{\thepage}
+colortheme: dove
+urlcolor: blue
+---
+
+```{r, include=FALSE}
+# nice slides beginning here: https://www.youtube.com/watch?v=gkyjTcpCITM
+library(stargazer)
+suppressPackageStartupMessages(library(stargazer))
+```
+
+
+# What is R Markdown?
+
+## An Authoring and Analysis Framework
+
+- Save and execute code
+
+- Generate high quality reports that can be shared with an audience
+
+- Why?
+
+  - Turn work created in R into more accessible formats
+  
+  - Incorporate R code and R plots into the same documetns
+  
+  - They are reproducible. If you change the data, everything in the document automatically changes. 
+
+  - (Hint: This is a huge benefit!)
+
+
+## You Don't Want to Turn in This:
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/Basic-R-Script.png", dpi = 600)
+```
+
+
+## Or Even This:
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/R-Output-Plots.png", dpi = 800)
+```
+
+## But You Could Turn in This:
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/RMarkdown_Formatted.png", dpi = 600)
+```
+
+
+## With R Code, Results, Figures Embedded in a Nice Doc:
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/Better-Formatting.png", dpi = 600)
+```
+
+
+
+## Let's take a closer look at the final output of the document produced in R Markdown
+
+See .pdf of the Data Visualization lecture notes
+
+
+
+
+## This is a R Markdown Presentation about R Markdown
+
+In my kids' high school classes, they all learned *Google Slides*. In fact, they learn everything in the *Google Suite*.
+
+Google/MS PPT convenient, but they're highly limited
+
+This presentation is created in R Markdown. It handles technical material better than most other software
+
+The title slide of the R Markdown file:
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/R-Markdown-Title.pdf", dpi = 100)
+```
+
+
+## A Broader Comment on Producing Nice Documents
+
+- First, you can produce nice documents in many different programs
+
+- You don't have to adopt RMarkdown for everything
+
+- With that said, different programs are better suited than others for various tasks
+
+- Let's think about some common options:
+
+  - Word, Google Docs, Pages, ODT, RTF, LaTeX
+  
+  - What is beautiful about RMarkdown is that it will output into most of other types
+  
+  - So you can do your math, code, tables, figures, etc in a program designed for this, and then output into other forms
+
+
+
+## Flexibility. Output documents
+
+R Markdown is highly flexible with a variety of output documents
+
+- `html_notebook`: Interactive R Notebooks [[Link here]](https://bookdown.org/yihui/rmarkdown/notebook.html)
+- `html_document`: HTML document w/ Bootstrap CSS [[Link here]](https://bookdown.org/yihui/rmarkdown/html-document.html)
+- `pdf_document`: PDF document (via LaTeX template) [[Link here]](https://bookdown.org/yihui/rmarkdown/pdf-document.html)
+- `word_document`: Microsoft Word document (docx) [[Link here]](https://bookdown.org/yihui/rmarkdown/word-document.html)
+- `odt_document`: OpenDocument Text document [[Link here]](https://bookdown.org/yihui/rmarkdown/opendocument-text-document.html)
+- `rtf_document`: Rich Text Format document [[Link here]](https://bookdown.org/yihui/rmarkdown/rich-text-format-document.html)
+- `md_document`: Markdown document (various flavors) [[Link here]](https://bookdown.org/yihui/rmarkdown/markdown-document.html)
+
+
+## Flexibility. Presentations
+
+- `ioslides_presentation`: HTML presentation with ioslides [[Link here]](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)
+- `revealjs::revealjs_presentation`: HTML presentation with reveal.js [[Link here]](https://bookdown.org/yihui/rmarkdown/revealjs.html)
+- `slidy_presentation`: HTML presentation with W3C Slidy [[Link here]](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html)
+- `beamer_presentation`: PDF presentation with LaTeX Beamer [[Link here]](https://bookdown.org/yihui/rmarkdown/beamer-presentation.html)
+- `powerpoint_presentation`: PowerPoint presentation [[Link here]](https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html)
+
+## And More...
+
+- `flexdashboard::flex_dashboard`: Interactive dashboards [[Link here]](https://rmarkdown.rstudio.com/flexdashboard/)
+- `tufte::tufte_handout`: PDF handouts in the style of Edward Tufte [[Link here]](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)
+- `tufte::tufte_html`: HTML handouts in the style of Edward Tufte [[Link here]](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)
+- `tufte::tufte_book`: PDF books in the style of Edward Tufte [[Link here]](https://bookdown.org/yihui/rmarkdown/tufte-handouts.html)
+- `html_vignette`: R package vignette (HTML) [[Link here]] (https://bookdown.org/yihui/rmarkdown/r-package-vignette.html)
+- `github_document`:GitHub Flavored Markdown document [[Link here]](https://rmarkdown.rstudio.com/github_document_format.html)
+
+See [[link here]](https://rmarkdown.rstudio.com/lesson-9.html)
+
+
+## And More...
+
+You can also build:
+
+- books [[Link here]](https://bookdown.org/)
+- websites [[Link here]](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html)
+- interactive documents [[Link here]](https://bookdown.org/yihui/rmarkdown/shiny-documents.html) with R Markdown.
+
+
+
+## Version Control
+
+When using the notebook, can implement version control
+
+R Markdown files are plain-text files, so they work well with version control
+
+In the second part of Module 5, we will be covering version control using Github in much more detail
+
+```{r, include=FALSE}
+#https://rmarkdown.rstudio.com/lesson-10.html
+```
+
+## Shiny Apps
+
+We'll discuss `Shiny Apps` later in the semester. For now, just have a look at this one that our IPD program manager created:
+
+[[See Link Here]](https://ethan-tenison.shinyapps.io/Pionero_Nonprofit_Explorer/)
+
+
+## Quiz: 
+
+Which of the following end outputs can RMarkdown **not** write to:
+
+- .pdf
+- .html
+- .edu
+- .doc(x)
+
+
+## Answer: 
+
+```{r, include=FALSE}
+# freebie here: the answer is .edu
+```
+
+
+
+# How Does it Work?
+
+  
+## Working in R Markdown
+
+R Markdown comes with a very nice template
+
+Click on the add document button in the upper left of RStudio, and choose R Markdown 
+
+Or: File > New File > R Markdown; Click presentation tab (or another); Enter other meta information
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/Choosing-R-Markdown-Document.png", dpi = 750)
+```
+
+**And note that R Markdown defaults the working directory to the location of the .Rmd file**
+
+
+## Notebook Interface
+
+Flexible framewok in which you can run the whole document, or in chunks
+
+There is a back end, markup side, and then a final output
+
+Render output at any point to see what the final product looks like
+
+```{r}
+
+3 + 4
+
+x <- sqrt(144)
+
+x
+
+```
+
+
+
+
+## Types of Data Inputted into R Markdown
+
+- Meta data
+- Text
+- Code chunks
+
+
+## Working with Information Types: Meta-data
+
+- If Meta-Data:
+  - YAML: Originally YAML was said to mean *Yet Another Markup Language*
+  - *YAML Ain't Markup Language*
+  - Go to the meta data and talk through it
+    - `beamer_presentation`
+    - `html_document`
+    - many other possibilities. see above
+
+- Headings
+  - Technically not meta-data, but let's look at how file organization works
+  
+  - Try adding section, subsection, and subsubsection headings
+  
+  - Code this and then `Knit` the document
+  
+
+  
+## Working with Information Types: Text
+
+- If text: largely what you would do otherwise. 
+
+- But some unique ways of inputting types of text
+  
+  - Plain text, as is
+  - Bold: **bold**
+  - Italics: *italics*
+  - [links](markdown.rstudio.com)
+  - `code`
+  - Bullets and sub-bullets
+
+- Note that bullets occur by adding a dash with a space
+  - And sub-bullets by indent, dash, space
+  
+1. Numbered lists by just putting in the numbers
+2. Like this
+
+  
+- See cheatsheet!!! [[Link here]](https://rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
+  - Especially the section called "Pandoc's Markdown"
+
+
+
+
+## Working with Information: Code Chunks. The basic setup
+
+- Use 3 single right quotation marks to begin and end. Everything in between is run by R, and should be coded as such
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/code_chunk.png", dpi = 500)
+```
+
+
+
+## Working with Information: Code Chunks. (Continued)
+
+- Note that it typically produces weird output with comments. Let's get rid of those
+
+```{r}
+2 + 2 
+```
+
+We can get rid of the pound sign by adding the comment: ````{r, comment=""}`
+
+```{r, comment = ""}
+2 + 2 
+```
+
+Notice the difference?
+
+
+## What if I Want to See the Code I Used to Produce Some Output
+
+- Use the `echo` option
+
+```{r, comment = "", echo=TRUE}
+2 + 2 
+```
+
+
+
+## Working with Information: Code Chunks
+
+- `include = TRUE/FALSE` prevents code and results from appearing in the finished file. R Markdown still runs the code in the chunk, and the results can be used by other chunks.
+- `echo = TRUE/FALSE` prevents code, but not the results from appearing in the finished file. This is a useful way to embed figures.
+- `message = TRUE/FALSE` prevents messages that are generated by code from appearing in the finished file.
+- `warning = TRUE/FALSE` prevents warnings that are generated by code from appearing in the finished.
+- `fig.cap = "..."` adds a caption to graphical results.
+- See cheatsheet for many more options
+
+
+## Quiz: 
+
+If you want to make a comment to yourself, but not have it appear in the final output, would you include?
+
+- `include=NEITHER`
+- `include=FALSE`
+- `include=TRUE`
+- `include=NONE`
+
+
+## Answer: 
+
+```{r, include=FALSE}
+# It would be `include=FALSE`
+```
+
+
+
+# Some Examples and Concluding Thoughts
+
+## Let's look at the Data Visualization Module .Rmd file
+
+- Open the *Data Visualization R Markdown* file
+
+- Work through some of the components of that
+
+- The preamble can be quite complicated. But it doesn't have to be
+
+- Notice the preamble, text options, and the R code chunks
+
+- Everything fits into these three types of information
+
+
+
+## Make your own file with the three types of information
+
+Please take some time to play around with some various options
+
+See the cheatsheet for ideas
+
+Open, add metadata, add text, add r code chunks, `knit` and save the document 
+
+Let's do one together
+
+
+## First add the preamble, note that R will generate it for you, but...
+
+```{r}
+#---
+#title: "R-Markdown-Practice-File"
+#author: "Findley"
+#date: "6/9/2020"
+#output: html_document
+#---
+```
+
+## Markup vs. the Final Output
+
+- For a minute ignore everything down below the preamble. It's helpful example code, but back to that shortly
+
+- Here you will use the `Knit` command to produce the output of interest
+
+
+
+
+## Try changing the output type:
+
+- `pdf_document`
+- `html_document`
+- `word_document`
+- etc
+
+Notice that you might need some additional material installed!!
+
+If you do a .pdf document, you'll need to have a version of LaTeX
+
+
+
+## Installling LaTeX
+
+There are multiple full LaTeX installations if you want to use LaTeX. 
+
+Or you can install *tinytex*. Here's how:
+
+```{r}
+#install.packages('tinytex')
+#tinytex::install_tinytex()  # install TinyTeX
+```
+
+This can be a bit of a pain, but note that it's not much different than having to purchase and ensure that MS Word is on your machine.
+
+You're just getting a different typesetting platform with LaTeX. If you choose `word_document` for your output, you need Word installed. 
+
+
+
+## Let's add a table of contents
+
+`toc: true`
+
+
+
+## Notice that when you start a R Markdown file, that it gives you a default
+
+- You may or may not want that:
+
+```{r, eval=F, echo=T}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+- If you want to, you can of course delete this and set all your own code how you wish
+
+- Or keep it and change `echo = TRUE` so that it changes the default
+
+- What does this mean in practice?
+
+
+## Much of the time, don't want the code!
+
+Let's use the *cars* data to illustrate this. The following shows the code we're using:
+
+```{r}
+plot(mtcars$wt, mtcars$mpg, xlab = "Weight", ylab = "MPG")
+```
+
+
+## Can also use the preamble code for  a variety of purposes
+
+- Drop code (`echo=FALSE`), align figures, and add a caption
+
+```{r, echo=FALSE, fig.align='center', fig.cap='MY AMAZING figure'}
+plot(mtcars$wt, mtcars$mpg, xlab = "Weight", ylab = "MPG")
+```
+
+
+## Let's try some of our other functionality discussed above
+  
+  - Plain text, as is
+  - Bold: **bold**
+  - Italics: *italics*
+  - [links](markdown.rstudio.com)
+  - `code`
+
+- Bullets and sub-bullets
+  - Note that bullets occur by adding a dash with a space
+    - And sub-bullets by indent, dash, space
+  
+1. Numbered lists by just putting in the numbers
+2. Like this
+
+## There can be some frustrating things, but just need to work through them a bit
+
+For example:
+
+Notice what happens when we do bullets these two ways:
+
+- Bullet 1
+- Bullet 2
+
+And now
+
+-Bullet 3
+-Bullet 4
+
+What happened?
+
+
+## The text options are pretty straightforward, but do require some getting used to
+
+Superscript: `superscript^2`
+Subscript: `subscript~2~`
+Strikethrough: `~~strikethrough~~`
+
+
+## Headers
+
+Header 1: `# Header 1`
+Header 2: `## Header 2`
+Header 3: `### Header 3`
+Header 4: `#### Header 4`
+Header 5: `##### Header 5`
+Header 6: `###### Header 6`
+
+
+
+
+
+## Can make simple, elegant tables
+
+```{r echo = TRUE, results='asis'}
+library(stargazer)
+stargazer(mtcars[1:5, 1:5], summary=FALSE)
+
+```
+
+## We taught you `stargazer` in the Introduction to R Module
+
+But recall that anyone can create packages for R. And there are a lot!! Here's another package for tables:
+
+
+```{r echo = TRUE, results = 'asis'}
+library(knitr)
+kable(mtcars[1:5, 1:5], caption = "A knitr kable.")
+
+```
+
+## Can also add some manual tables, which are a bit trickier
+
+For example:
+
+|       |Operator | Example|
+|:------|:-----|:----- |
+| Addition    | `+`   | `2+4` |
+| Subtraction |`-`    | `2-4` |
+| Multiplication | `*`  | `2*4` |
+| Division | `/` | `4/2` |
+| Exponentiation| `^` |`2^4` |
+| Square Root | `sqrt()` | `sqrt(144)`|
+| Absolute Value | `abs()` | `abs(-4)` |
+
+
+
+## Can add some useful figures:
+
+Recall our Napoleon figure from the Data Viz Module?
+
+```{r, fig.align='center', echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/Napoleon.png", dpi = 600)
+```
+
+
+## Can add the figure a different way 
+
+![Caption here](R-Markdown-Aux/Napoleon.png)
+
+
+## Or some good photos:
+
+```{r, fig.align='center', echo=FALSE}
+knitr::include_graphics("R-Markdown-Aux/TheProfessor.png", dpi = 600)
+```
+
+
+
+
+## Might want to add a footnote
+
+In this module,[^1] we are discussing R Markdown. 
+
+[^1]: R Markdown is quite functional.
+
+In our next module, we'll turn to Github
+
+
+
+
+
+
+## Coding Languages
+
+`knitr` can execute code in many langauges besides R, including:
+
+- Python
+- SQL
+- Bash
+- Rcpp
+- Stan
+- JavaScript
+- CSS
+
+
+
+## Some Complications
+
+Recall the gapminder animation....
+
+It worked well in .html, but not in .pdf
+
+Need to be cognizant that it is, indeed, highly flexible, but there are some dependencies
+
+Examples:
+
+- html code doesn't always work well with *LaTeX*
+
+- *LaTeX* doesn't always work well with html
+
+
+## Frustrations
+
+R Markdown can feel frustrating at first, but we encourage you to think of the alternative. 
+
+Findley, for one, can't format a figure in MS Word to save his life
+
+R Markdown has it's idiosyncracies, but integrates data in amazing ways. Well worth the investment of a bit of time to learn!!
+
+

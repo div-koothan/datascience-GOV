@@ -1,0 +1,79 @@
+---
+title: "RMarkdown Practice Report"
+author: "Divya Koothan"
+date: "6/18/2020"
+output: word_document
+toc: TRUE
+---
+```
+install.packages('tinytex')
+tinytex::install_tintex() #install TinyTex
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#comment
+```
+
+# R Markdown
+## R Markdown
+### R Markdown 
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>. [[CLICK LINK HERE]](http://rmarkdown.rstudio.com)
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Heading: Bullet Point 
+
+- Bullet point 1
+- Bullet point 2
+  - Sub-bullet point 1 
+  - Sub-bullet point 2
+  
+1. Number 1
+2. Number 2
+3. Number 3
+
+  - Plain test as is
+  - Bold: **bold**
+  - Italics: *italics*
+  - [links](markdown.rstudio.com)
+  - `code`
+  
+Superscript: superscript^2
+Subscript: subscript~2~
+Strikethrough: ~~strikethrough~~
+
+```{r}
+library(stargazer)
+stargazer(mtcars[1:5, 1:5], summary = FALSE, type = "text")
+```
+
+|       |Operator | Example|
+|:------|:--------|:-----|
+|Addition | `+`   | `2+4`|
+|Subtraction | `-` | `2-4`|
+|Multiplication | `*`| `2*4`|
+|Division | `/` | `4/2` |
+|Exponentiation | `^` | `2^4` |
+|Square Root | `sqrt()` | `sqrt(144)`|
+|Absolute Value | `abs()` | `abs(-4)` |
+
+
+
+
